@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactive Layout 5</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        body {background-color: #e3f2fd;}
+        #wrap {width: 1200px; margin: 0 auto;}
+        #header {width: 100%; height: 100px; background-color: #b2defe;}
+        #banner {width: 100%; height: 400px; background-color: #7ecbfd;}
+        
+        #content1 {overflow: hidden;}
+        #content1 > * {float:left}
+        #content1 nav {width: 30%;height: 500px;background-color: #43b5fc;}
+        #content1 .right:nth-last-child(2) {width: 70%;height: 250px;background-color: #00a5fb;}
+        #content1 .right:nth-last-child(1) {width: 70%;height: 250px;background-color: #0096fa;}
+
+        #content2 {overflow: hidden}
+        #content2 .box {float:left; width:33.33%;height: 200px; }
+        #content2 .box:nth-child(1) {background-color: #0088ec;}
+        #content2 .box:nth-child(2) {background-color: #0076d9;}
+        #content2 .box:nth-child(3) {background-color: #0064c6;}
+        
+        #content3 {overflow: hidden;padding: 5%; background-color: #00a6fc;}
+        #content3 .square {float:left; width:20%; height: 200px; background-color: #0076d9;border-radius: 10px;}
+        #content3 .square:not(:last-child) {margin-right: 6.66%;}
+
+        footer{width: 100%;height: 100px; background-color: #43b5fc;}
+
+        /* 화면 너비 0 ~ 1200px */
+        @media (max-width: 1220px) {
+            #wrap {width: 100%;}
+            #content2 .box{width: 50%;}
+            #content2 .box:last-child {display: none;}
+            #content3 .square {width: 25%;}
+            #content3 .square:last-child {display:none}
+            #content3 .square:nth-child(3) {margin: 0}
+            #content3 .square:nth-child(-n+2) {margin: 0 10% 0 0}
+        }
+
+        /* 화면 너비 0 ~ 768px */
+        @media (max-width: 768px) {
+            #content2 .box {float:none; width: 100%;}
+        }
+
+        /* 화면 너비 0 ~ 480px */
+        @media (max-width: 480px) {
+            #content1 nav {float:none;width: 100%;height: 100px;}
+            #content1 .right:nth-last-child(2) {float:none;width: 100%;height: 100px;}
+            #content1 .right:nth-last-child(1) {float:none;width: 100%;height: 100px;}
+
+            #content3 {padding: 10%;}
+            #content3 .square{width: 100%;}
+            #content3 .square:nth-child(-n+2) {float:none;margin: 0 0 10px 0}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header"></header>
+        <section id="banner"></section>
+        <section id="content1">
+            <nav></nav>
+            <article class="right"></article>
+            <article class="right"></article>
+        </section>
+        <section id="content2">
+            <article class="box"></article>
+            <article class="box"></article>
+            <article class="box"></article>
+        </section>
+        <section id="content3">
+            <article class="square"></article>
+            <article class="square"></article>
+            <article class="square"></article>
+            <article class="square"></article>
+        </section>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>
